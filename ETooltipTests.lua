@@ -298,10 +298,12 @@ function TooltipTests:ItemToolTip (wndControl, item, bStuff, nCount)
         end
         if this.tSettings["bShowItemID"] then
             if wndTooltip then
-                this:AttachBelow("Item ID: " .. item:GetItemId() , wndTooltip:FindChild("ItemTooltip_Header"))
+                local ItemId = item:GetItemId()
+                this:AttachBelow(string.format("Item ID: %d %x", ItemId, ItemId), wndTooltip:FindChild("ItemTooltip_Header"))
             end
             if wndTooltipComp then
-                this:AttachBelow("Item ID: " .. bStuff.itemCompare:GetItemId() , wndTooltipComp:FindChild("ItemTooltip_Header"))
+                local ItemId = bStuff.itemCompare:GetItemIds
+                this:AttachBelow(string.format("Item ID: %d %x", ItemId, ItemId), wndTooltipComp:FindChild("ItemTooltip_Header"))
             end
         end
         --Linked item check for mouseover - we put compare into the permanant tooltip, so we ignore the mousever one
