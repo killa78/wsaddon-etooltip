@@ -43,7 +43,7 @@ local tDefaultSettings = {
     [Unit.CodeEnumProperties.PvPOffensiveRating]            = true,
     ["PvPHealing"]                                          = true,
     ["bShowRuneValues"]                                     = true,
-    ["bShowItemID"]                                         = false,
+    ["bShowItemID"]                                         = true,
 
 }
 
@@ -299,15 +299,13 @@ function TooltipTests:ItemToolTip (wndControl, item, bStuff, nCount)
         if this.tSettings["bShowItemID"] then
             if wndTooltip then
                 local ItemId = item:GetItemId()
-                local strItemId = string.format("Item ID: %d <i%x>", ItemId, ItemId)
+				local strItemId = string.format("Item ID: %d %x", ItemId, ItemId)
                 this:AttachBelow(strItemId, wndTooltip:FindChild("ItemTooltip_Header"))
-                -- this:AttachBelow("Item ID: " .. item:GetItemId() , wndTooltip:("ItemTooltip_Header"))
             end
             if wndTooltipComp then
-                local ItemId = bStuff.itemCompare:GetItemIds
-                local strItemId = string.format("Item ID: %d <i%x>", ItemId, ItemId)
+                local ItemId = bStuff.itemCompare:GetItemId()
+				local strItemId = string.format("Item ID: %d %x", ItemId, ItemId)
                 this:AttachBelow(strItemId, wndTooltipComp:FindChild("ItemTooltip_Header"))
-                -- this:AttachBelow("Item ID: " .. bStuff.itemCompare:GetItemId() , wndTooltipComp:FindChild("ItemTooltip_Header"))
             end
         end
         --Linked item check for mouseover - we put compare into the permanant tooltip, so we ignore the mousever one
