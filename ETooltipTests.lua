@@ -302,7 +302,7 @@ function TooltipTests:ItemToolTip (wndControl, item, bStuff, nCount)
                 this:AttachBelow(string.format("Item ID: %d %x", ItemId, ItemId), wndTooltip:FindChild("ItemTooltip_Header"))
             end
             if wndTooltipComp then
-                local ItemId = bStuff.itemCompare:GetItemIds
+                local ItemId = bStuff.itemCompare:GetItemId()
                 this:AttachBelow(string.format("Item ID: %d %x", ItemId, ItemId), wndTooltipComp:FindChild("ItemTooltip_Header"))
             end
         end
